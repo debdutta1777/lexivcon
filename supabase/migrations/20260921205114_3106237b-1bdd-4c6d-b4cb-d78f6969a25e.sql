@@ -1,0 +1,1 @@
+ALTER TABLE public.legal_cases ADD COLUMN IF NOT EXISTS document_text TEXT;
