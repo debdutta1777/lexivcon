@@ -1,0 +1,4 @@
+- [ ] Build a secure cloud-saved legal case workspace
+- [ ] Add live AI document-aware chat with clear legal boundaries
+- [ ] Add sign-in and case/document creation flow
+- [ ] Validate the preview across desktop and mobile layouts
