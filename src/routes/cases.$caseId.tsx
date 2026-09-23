@@ -3,14 +3,12 @@ import { DefaultChatTransport, type UIMessage } from "ai";
 import { useChat } from "@ai-sdk/react";
 import {
   ArrowLeft,
-  ArrowUp,
   CheckCircle2,
   FileText,
   LogOut,
   Menu,
   PanelLeft,
   Plus,
-  Scale,
   ShieldCheck,
   X,
 } from "lucide-react";
@@ -34,7 +32,6 @@ import {
   PromptInputSubmit,
   PromptInputTextarea,
 } from "@/components/ai-elements/prompt-input";
-import { lovable } from "@/integrations/lovable";
 import { supabase } from "@/integrations/supabase/client";
 import type { Tables } from "@/integrations/supabase/types";
 import seal from "@/assets/lexicon-seal.png";
@@ -86,7 +83,11 @@ function CaseWorkspace() {
     onFinish: ({ message }) => {
       const assistantText = messageText(message);
       if (assistantText) {
-        void supabase.from("legal_messages").insert({ case_id: caseId, user_id: "", role: "assistant", content: assistantText });
+        void supabase.auth.getUser().then(({ data }) => {
+          if (data.user) {
+            void supabase.from("legal_messages").insert({ case_id: caseId, user_id: data.user.id, role: "assistant", content: assistantText });
+          }
+        });
       }
       composerRef.current?.focus();
     },
