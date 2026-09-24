@@ -2,3 +2,4 @@
 - [ ] Add live AI document-aware chat with clear legal boundaries
 - [ ] Add sign-in and case/document creation flow
 - [ ] Validate the preview across desktop and mobile layouts
+- [ ] Verify every page and interactive button across desktop and mobile previews
